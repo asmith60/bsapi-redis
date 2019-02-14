@@ -1,0 +1,16 @@
+repositories:
+  - name: stable
+    url: http://storage.googleapis.com/kubernetes-charts
+  - name: incubator
+    url: http://storage.googleapis.com/kubernetes-charts-incubator
+
+helmDefaults:
+  tillerNamespace: bsapi
+
+releases:
+  - name: bsapi-message-ids
+    namespace: bsapi
+    chart: stable/redis
+    version: 4.3.0
+    values:
+      - values.yaml

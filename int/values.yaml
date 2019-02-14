@@ -1,0 +1,17 @@
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: "bsapi-int"
+    selector: { prometheus: primary-prom }
+
+cluster:
+  enabled: true
+  slaveCount: 2
+
+master:
+  persistence:
+    enabled: true
+    size: 20Gi
+
+existingSecret: redis-password

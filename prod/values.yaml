@@ -2,7 +2,7 @@ metrics:
   enabled: true
   serviceMonitor:
     enabled: true
-    namespace: "bsapi"
+    namespace: "bsapi-prod"
     selector: { prometheus: primary-prom }
 
 cluster:

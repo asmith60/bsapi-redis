@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  kubernetes: lifeway/kubernetes@1
+
+workflows:
+  deploy:
+    jobs:
+      - kubernetes/helmfile-deploy:
+          name: int
+          encoded-kubeconfig: ${KUBECONFIG_ENCODED}
+          kube-context: naskube-dmz-test
+          helmfile-path: int/helmfile.yaml
+          context: bsapi-k8s
+      - kubernetes/helmfile-deploy:
+          name: uat
+          encoded-kubeconfig: ${KUBECONFIG_ENCODED}
+          kube-context: naskube-dmz-test
+          helmfile-path: uat/helmfile.yaml
+          context: bsapi-k8s
+      # - kubernetes/helmfile-deploy:
+      #     name: prod
+      #     encoded-kubeconfig: ${KUBECONFIG_ENCODED}
+      #     kube-context: naskube-dmz-prod
+      #     helmfile-path: prod/helmfile.yaml
+      #     context: bsapi-k8s
